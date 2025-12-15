@@ -36,13 +36,13 @@ namespace Appo.Core.Entities
 
 		private void setName(string name)
 		{
-			if(string.IsNullOrWhiteSpace(name))
+			if(!string.IsNullOrWhiteSpace(name))
 				this.Name = name;
 		}
 
 		private void setDescription(string description)
 		{
-			if(string.IsNullOrWhiteSpace(description))
+			if(!string.IsNullOrWhiteSpace(description))
 				this.Description = description;
 		}
 

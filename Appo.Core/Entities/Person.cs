@@ -7,6 +7,7 @@ namespace Appo.Core.Entities
 {
 	public class Person
 	{
+		public Guid Id { get; set; }
 		public string Name { get; private set; }
 		public string? LastName { get; private set; }
 		public Email? Email { get; set; } //TODO: que el constructo valide que exista al menos 1 de las 2 para guardar los datos...
@@ -22,6 +23,7 @@ namespace Appo.Core.Entities
 		{
 
 			ValidationRules(name, lastName, email, phoneNumber);
+			this.Id = Guid.CreateVersion7();
 			this.Name = name;
 			this.LastName = lastName;
 			if(!string.IsNullOrWhiteSpace(email))
@@ -34,7 +36,7 @@ namespace Appo.Core.Entities
 
 		#region Edit
 
-		protected void Up(string? name, string? lastName, string? email, string? phoneNumber)
+		public void Up(string? name, string? lastName, string? email, string? phoneNumber)
 		{
 			//ValidationRules(name, lastName, email, phoneNumber);
 			SetName(name);
@@ -46,25 +48,25 @@ namespace Appo.Core.Entities
 
 		private void SetPhoneNumber(string phoneNumber)
 		{
-			if(string.IsNullOrWhiteSpace(phoneNumber))
+			if(!string.IsNullOrWhiteSpace(phoneNumber))
 				this.PhoneNumber = new(phoneNumber);
 		}
 
 		private void SetEmail(string email)
 		{
-			if(string.IsNullOrWhiteSpace(email))
+			if(!string.IsNullOrWhiteSpace(email))
 				this.Email = new(email);
 		}
 
 		private void SetLastName(string lastname)
 		{
-			if(string.IsNullOrWhiteSpace(lastname))
+			if(!string.IsNullOrWhiteSpace(lastname))
 				this.LastName = LastName;
 		}
 
 		private void SetName(string name)
 		{
-			if(string.IsNullOrWhiteSpace(name))
+			if(!string.IsNullOrWhiteSpace(name))
 				this.Name = name;
 		}
 

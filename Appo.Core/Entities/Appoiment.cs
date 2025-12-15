@@ -5,40 +5,86 @@ using Appo.Core.Helpers;
 
 namespace Appo.Core.Entities
 {
+	//TODO: Verificar si aca no se puede trabajar con un patron builder
+	//TODO: que tambien me permita ir agregando elementos a partir de actualizacion
+	//TODO: que genere una validacion inicial, y valla validando cada particular a medida que se agrega para que trabaje continuamente.
 	public class Appoiment
 	{
 		public Guid Id { get; set; }
 
-		public AppoTimeInterval TimeInterval { get; set; }
+		public AppoTimeInterval TimeInterval { get; private set; }
 
-		public Guid CustomerId { get; set; }
-		public Customer? Customer { get; set; }
+		public Guid CustomerId { get; private set; }
+		public Customer? Customer { get; private set; }
 
-		public Guid? WorkerId { get; set; }
-		public User? Worker { get; set; }
+		public Guid? WorkerId { get; private set; }
+		public User? Worker { get; private set; }
 
-		public AppoimentStatus Status { get; set; }
+		public Guid? OfficeId { get; private set; }
+		public Office? Office { get; private set; }
 
-		public string? CustomerRequest { get; set; }
+		public AppoimentStatus Status { get; private set; }
 
-		public string? WorkDescription { get; set; }
+		public string? CustomerRequest { get; private set; }
 
+		public string? WorkDescription { get; private set; }
 		// => esto es el chisme
-		public string? Gossip { get; set; }
+		public string? Gossip { get; private set; }
 
 		#region created
-		public Appoiment(Guid customerId, DateTime start, DateTime finish,Guid WorkerId ,string? CustomerRequest)
+		private Appoiment()
+		{
+		    
+		}
+
+		internal Appoiment(Guid customerId, DateTime start, DateTime finish,Guid? WorkerId ,string? CustomerRequest)
 		{
 			validateTimeIntelval(start, finish);
 			this.Id = Guid.CreateVersion7();
-			this.TimeInterval = new(start, finish);
 			this.CustomerId = customerId;
+			this.TimeInterval = new(start, finish);
 			this.Status = AppoimentStatus.Reserved;
 			if(string.IsNullOrWhiteSpace(CustomerRequest))
 				this.CustomerRequest = CustomerRequest;
 			if(Guid.Empty != WorkerId && WorkerId != null)
 				this.WorkerId = WorkerId;
 		}
+		#endregion
+
+		#region Setters Opcionals
+
+		internal void AssingWorker(Guid workerId)
+		{
+			if(workerId == Guid.Empty)
+				throw new BusinesRuleException("Not Valid Worker");
+			this.WorkerId = workerId;
+		}
+
+		internal void AssingOffice(Guid officeId)
+		{
+			if(officeId == Guid.Empty)
+				throw new BusinesRuleException("Not Valid Office");
+			this.OfficeId = officeId;
+		}
+
+		internal void AssingCustomerRequest(string request)
+		{
+			if(!string.IsNullOrWhiteSpace(request))
+				this.CustomerRequest = request;
+		}
+
+		internal void AssingWorkDescription(string workDescription)
+		{
+			if(!string.IsNullOrWhiteSpace(workDescription))
+				this.WorkDescription = workDescription;
+		}
+
+		internal void AssingGossip(string gossip)
+		{
+			if(!string.IsNullOrWhiteSpace(gossip))
+				this.Gossip = gossip;
+		}
+
 		#endregion
 
 		#region Edit
@@ -73,10 +119,10 @@ namespace Appo.Core.Entities
 		private void validateTimeIntelval(DateTime start, DateTime finish) {
 
 			DateTime hoy = DateTime.UtcNow.AddHours(-12);
-			if(hoy < start)
+			if( start < hoy)
 				throw new BusinesRuleException("The strart time is older");
 
-			if(hoy < finish)
+			if(finish < hoy)
 				throw new BusinesRuleException("The finish time is older");
 		}
 		#endregion

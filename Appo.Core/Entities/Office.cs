@@ -30,11 +30,11 @@ namespace Appo.Core.Entities
 
 
 #region Edit
-		protected void Up(string? name, Direction? direction)
+		public void Up(string? name, Direction? direction)
 		{
-			if(direction != null && string.IsNullOrWhiteSpace(direction.Value) )
+			if(direction != null && !string.IsNullOrWhiteSpace(direction.Value) )
 				this.Direction = direction;
-			if(string.IsNullOrWhiteSpace(name))
+			if(!string.IsNullOrWhiteSpace(name))
 				this.Name = name;
 		}
 
