@@ -76,9 +76,9 @@ namespace Appo.Core.Entities
 		private void ValidationRules(string name, string LastName, string? email, string? phoneNumber)
 		{
 			if(string.IsNullOrWhiteSpace(name))
-				throw new BusinesRuleException($"The {typeof(name)} is required");
+				throw new BusinesRuleException($"The Name is required");
 			if(string.IsNullOrWhiteSpace(email) && string.IsNullOrWhiteSpace(phoneNumber))
-				throw new BusinesRuleException($"We need a mode for contact whit you! please add a {typeof(email)} or a {typeof(PhoneNumber)} for contact you later!");
+				throw new BusinesRuleException($"We need a mode for contact whit you! please add a Email Address or a PhoneNumber for contact you later!");
 		}
 		#endregion
 	}

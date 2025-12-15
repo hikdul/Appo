@@ -1,4 +1,5 @@
 
+using Appo.Core.Exceptions;
 using System;
 
 namespace Appo.Core.Entities
@@ -53,7 +54,7 @@ namespace Appo.Core.Entities
 		private void ValidationRules(string name, string? Description)
 		{
 			if(string.IsNullOrWhiteSpace(name))
-				throw new BusinesRuleException($"the {typeof(name)} is required");
+				throw new BusinesRuleException($"the Name of the Company is required");
 		}
 		#endregion
 	}

@@ -1,5 +1,5 @@
 
-
+using System.Text.RegularExpressions;
 using Appo.Core.Exceptions;
 
 namespace Appo.Core.ObjectValues
@@ -14,7 +14,7 @@ namespace Appo.Core.ObjectValues
 			if(string.IsNullOrEmpty(email))
 				throw new BusinesRuleException($"The {nameof(email)} is required");
 			if(!validateEmmailRegex(email))
-				throw new BusinesRuleException($"The {nameof(email)} is required");
+				throw new BusinesRuleException($"The {nameof(email)} is not a valid email");
 
 			this.Value = email;
 		}

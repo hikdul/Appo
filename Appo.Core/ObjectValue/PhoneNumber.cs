@@ -1,4 +1,5 @@
 using Appo.Core.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace Appo.Core.ObjectValues
 {
@@ -9,19 +10,19 @@ namespace Appo.Core.ObjectValues
 		public PhoneNumber(string phoneNumber)
 		{
 		    
-            if (!string.IsNullOrWhiteSpace(PhoneNumber))
+            if (string.IsNullOrWhiteSpace(phoneNumber))
             {
-                throw new BusinesRulesException($"The {nameof(PhoneNumber)} is required ");
+                throw new BusinesRuleException($"The {nameof(PhoneNumber)} is required ");
             }
 
-            if (!validatePhoneNumberRegex(PhoneNumber))
+            if (!validatePhoneNumberRegex(phoneNumber))
             {
-                throw new BusinessRuleException(
-                    $"The {nameof(PhoneNumber)} is no a valid PhoneNumber address"
+                throw new BusinesRuleException(
+                    $"The entry is no a valid PhoneNumber."
                 );
             }
 
-            this.Value = null;
+            this.Value = phoneNumber;
 		}
 
 		//TODO: Validar este para que dependiendo del pais valide segun el formato.

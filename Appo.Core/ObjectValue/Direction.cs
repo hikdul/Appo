@@ -16,11 +16,11 @@ namespace Appo.Core.ObjectValues
         {
 
             if (string.IsNullOrWhiteSpace(Direction))
-                throw new BusinessRuleException("The Direction description is REQUIRED");
+                throw new BusinesRuleException("The Direction description is REQUIRED");
             if (Latitud < -90 || Latitud > 90)
-                throw new BusinessRuleException("The Latitud value is not valid");
+                throw new BusinesRuleException("The Latitud value is not valid");
             if (Longitud < -180 || Longitud > 180)
-                throw new BusinessRuleException("The Latitud value is not valid");
+                throw new BusinesRuleException("The Longitud value is not valid");
 
             this.Value = Direction;
             this.Latitud = Latitud;

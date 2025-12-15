@@ -1,0 +1,11 @@
+/home/hikdul/Workspace/Appo/Appo.Core/bin/Debug/net10.0/Appo.Core.deps.json
+/home/hikdul/Workspace/Appo/Appo.Core/bin/Debug/net10.0/Appo.Core.dll
+/home/hikdul/Workspace/Appo/Appo.Core/bin/Debug/net10.0/Appo.Core.pdb
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.AssemblyInfoInputs.cache
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.AssemblyInfo.cs
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.csproj.CoreCompileInputs.cache
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.dll
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/refint/Appo.Core.dll
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.pdb
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/ref/Appo.Core.dll
