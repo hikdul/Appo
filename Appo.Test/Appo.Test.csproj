@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Appo.Core\Appo.Core.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+ 	 <AllowMissingPrunePackageData>true</AllowMissingPrunePackageData>
+  </PropertyGroup>
+
 </Project>

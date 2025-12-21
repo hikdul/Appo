@@ -5,17 +5,17 @@ using Appo.Core.Exceptions;
 
 namespace Appo.Core.Entities
 {
-    public class Office
-    {
-    	public Guid Id { get; set; }
+	public class Office
+	{
+		public Guid Id { get; set; }
 		public string Name { get; private set; }
 		public Direction? Direction { get; set; }
 		//public Guid TenantId { get; set; } //TODO: esto lo dejamos para cuando trabajo con esta area
 
-#region created
+		#region created
 		protected Office()
 		{
-		    
+
 		}
 
 		public Office(string name, Direction? direction)
@@ -25,32 +25,35 @@ namespace Appo.Core.Entities
 			this.Name = name;
 			this.Direction = direction;
 		}
-#endregion
+		#endregion
 
-
-
-#region Edit
+		#region Edit
 		public void Up(string? name, Direction? direction)
 		{
-			if(direction != null && !string.IsNullOrWhiteSpace(direction.Value) )
-				this.Direction = direction;
+			UpName(name);
+			UpDirection(direction);
+		}
+
+		private void UpName(string? name)
+		{
 			if(!string.IsNullOrWhiteSpace(name))
 				this.Name = name;
 		}
 
-		
+		private void UpDirection(Direction? direction)
+		{
+			if(direction != null && !string.IsNullOrWhiteSpace(direction.Value) )
+				this.Direction = direction;
+		}
+		#endregion
 
-
-#endregion
-
-
-#region validationRules
+		#region validationRules
 
 		private void validationRules(string name)
 		{
 			if(string.IsNullOrWhiteSpace(name))
 				throw new BusinesRuleException("the Office Name is required");
 		}
-#endregion
-    }
+		#endregion
+	}
 }

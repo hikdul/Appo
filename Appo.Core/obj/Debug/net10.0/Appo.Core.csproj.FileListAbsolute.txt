@@ -9,3 +9,4 @@
 /home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/refint/Appo.Core.dll
 /home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.pdb
 /home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/ref/Appo.Core.dll
+/home/hikdul/Workspace/Appo/Appo.Core/obj/Debug/net10.0/Appo.Core.sourcelink.json

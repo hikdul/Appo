@@ -3,6 +3,9 @@ using Appo.Core.ObjectValues;
 using Appo.Core.Exceptions;
 
 
+
+// Note: Posiblemente este usuario cresca y en ese momento se tenga que agregar algun elemento ya que el crecimiento se ara basado en los datos recojidos de la persona
+
 namespace Appo.Core.Entities
 {
 	public class Person
@@ -39,32 +42,32 @@ namespace Appo.Core.Entities
 		public void Up(string? name, string? lastName, string? email, string? phoneNumber)
 		{
 			//ValidationRules(name, lastName, email, phoneNumber);
-			SetName(name);
-			SetLastName(lastName);
-			SetEmail(email);
-			SetPhoneNumber(phoneNumber);
+			UpName(name);
+			UpLastName(lastName);
+			UpEmail(email);
+			UpPhoneNumber(phoneNumber);
 
 		}
 
-		private void SetPhoneNumber(string phoneNumber)
+		private void UpPhoneNumber(string phoneNumber)
 		{
 			if(!string.IsNullOrWhiteSpace(phoneNumber))
 				this.PhoneNumber = new(phoneNumber);
 		}
 
-		private void SetEmail(string email)
+		private void UpEmail(string email)
 		{
 			if(!string.IsNullOrWhiteSpace(email))
 				this.Email = new(email);
 		}
 
-		private void SetLastName(string lastname)
+		private void UpLastName(string lastname)
 		{
 			if(!string.IsNullOrWhiteSpace(lastname))
 				this.LastName = LastName;
 		}
 
-		private void SetName(string name)
+		private void UpName(string name)
 		{
 			if(!string.IsNullOrWhiteSpace(name))
 				this.Name = name;

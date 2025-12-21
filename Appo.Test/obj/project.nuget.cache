@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LheCVcOUkMk=",
+  "dgSpecHash": "vgnZCovsigQ=",
   "success": true,
   "projectFilePath": "/home/hikdul/Workspace/Appo/Appo.Test/Appo.Test.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,17 @@
     "/home/hikdul/.nuget/packages/mstest.analyzers/4.0.1/mstest.analyzers.4.0.1.nupkg.sha512",
     "/home/hikdul/.nuget/packages/mstest.testadapter/4.0.1/mstest.testadapter.4.0.1.nupkg.sha512",
     "/home/hikdul/.nuget/packages/mstest.testframework/4.0.1/mstest.testframework.4.0.1.nupkg.sha512",
-    "/home/hikdul/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+    "/home/hikdul/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.collections.immutable/8.0.0/system.collections.immutable.8.0.0.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.diagnostics.diagnosticsource/5.0.0/system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.reflection.metadata/8.0.0/system.reflection.metadata.8.0.0.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.text.encodings.web/6.0.1/system.text.encodings.web.6.0.1.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/system.text.json/6.0.11/system.text.json.6.0.11.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/microsoft.netcore.app.ref/10.0.0/microsoft.netcore.app.ref.10.0.0.nupkg.sha512",
+    "/home/hikdul/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.0/microsoft.aspnetcore.app.ref.10.0.0.nupkg.sha512"
   ],
   "logs": []
 }

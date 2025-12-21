@@ -87,7 +87,7 @@ namespace Appo.Core.Entities
 
 		#endregion
 
-		#region Edit
+		#region State Edit
 
 		public void CancelAppoiment()
 		{

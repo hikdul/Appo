@@ -268,3 +268,4 @@
 /home/hikdul/Workspace/Appo/Appo.Test/bin/Debug/net10.0/.msCoverageSourceRootsMapping_Appo.Test
 /home/hikdul/Workspace/Appo/Appo.Test/bin/Debug/net10.0/Appo.Core.dll
 /home/hikdul/Workspace/Appo/Appo.Test/bin/Debug/net10.0/Appo.Core.pdb
+/home/hikdul/Workspace/Appo/Appo.Test/obj/Debug/net10.0/Appo.Test.sourcelink.json
