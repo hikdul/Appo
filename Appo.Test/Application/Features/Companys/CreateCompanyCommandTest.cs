@@ -7,12 +7,14 @@ using FluentValidation;
 using FluentValidation.Results;
 
 using Appo.Aplication.Features.Companys.Commands;
+using Appo.Aplication.Exceptions;
 using Appo.Core.Entities;
 using Appo.Aplication.Contracts.Repositories;
 using Appo.Aplication.Contracts.Persistence;
 
 namespace Appo.Test.Features
 {
+	//TODO: generar resto de test para este elemento
 
 	[TestClass]
 	public class CreateCompanyCommandTest
@@ -22,7 +24,7 @@ namespace Appo.Test.Features
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		private IRepositoryCompany repository;
 		private IUnitOfWork unitOfWork;
-		private CreateCompanyCommandHandle handler;
+		private CreateCompanyCommandHandle feature;
 		private FluentValidation.IValidator<CreateCompanyCommand> validator;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
@@ -33,7 +35,7 @@ namespace Appo.Test.Features
 			unitOfWork = Substitute.For<IUnitOfWork>();
 			validator = Substitute.For<FluentValidation.IValidator<CreateCompanyCommand>>();
 
-			handler = new CreateCompanyCommandHandle(repository, unitOfWork, validator);
+			feature = new CreateCompanyCommandHandle(repository, unitOfWork, validator);
 		}
 
 		[TestMethod]
@@ -46,7 +48,7 @@ namespace Appo.Test.Features
 			var buildCompany = new Company(name, null);
 			repository.Add(Arg.Any<Company>()).Returns(buildCompany);
 
-			var result = await handler.Handle(command);
+			var result = await feature.Handle(command);
 
 			await repository.Received(1).Add(Arg.Any<Company>());
 			await unitOfWork.Received(1).Commit();

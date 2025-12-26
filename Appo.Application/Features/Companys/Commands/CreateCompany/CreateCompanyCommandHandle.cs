@@ -5,12 +5,13 @@ using Appo.Aplication.Contracts.Persistence;
 using Appo.Aplication.Contracts.Repositories;
 using Appo.Aplication.Exceptions;
 using Appo.Core.Entities;
+using Appo.Aplication.Utilities.Mediator;
 using FluentValidation;
 using FluentValidation.Results;
 
 namespace Appo.Aplication.Features.Companys.Commands
 {
-    public class CreateCompanyCommandHandle
+    public class CreateCompanyCommandHandle: IRequestHandler<CreateCompanyCommand, Guid>
     {
         private readonly IRepositoryCompany repository;
         private readonly IUnitOfWork unitOfWork;
