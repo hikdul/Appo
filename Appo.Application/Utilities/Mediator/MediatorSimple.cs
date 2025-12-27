@@ -1,4 +1,6 @@
 using Appo.Aplication.Exceptions;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace Appo.Aplication.Utilities.Mediator
 {
@@ -13,7 +15,7 @@ namespace Appo.Aplication.Utilities.Mediator
 
 		public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request)
 		{
-			//await Execvalidations(request);
+			await ExecValidations(request);
 
 			//?: aca se esta usando Reflexion
 			var FeatureType = typeof(IRequestHandler<,>).MakeGenericType(
@@ -36,7 +38,7 @@ namespace Appo.Aplication.Utilities.Mediator
 /*
 		public async Task Send(IRequest request)
 		{
-			await Execvalidations(request);
+			await ExecValidations(request);
 
 			var FeatureType = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
 			var Feature = serviceProvider.GetService(FeatureType);
@@ -53,8 +55,7 @@ namespace Appo.Aplication.Utilities.Mediator
 		}
 		*/
 
-		/*
-		private async Task Execvalidations(object request)
+		private async Task ExecValidations(object request)
 		{
 			//~: trabajamos con las validaciones, para tenerlas aca y asi si existen que simplemente se ejecuten en este llamado.
 
@@ -76,10 +77,10 @@ namespace Appo.Aplication.Utilities.Mediator
 				var validationResult = (ValidationResult)resultado!.GetValue(tareaValidar)!;
 				if (!validationResult.IsValid)
 				{
-					throw new ExcepcionDeValidacion(validationResult);
+					throw new AppoValidationException(validationResult);
 				}
 			}
 		}
-		*/
+		
 	}
 }

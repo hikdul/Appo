@@ -35,7 +35,7 @@ namespace Appo.Test.Features
 			unitOfWork = Substitute.For<IUnitOfWork>();
 			validator = Substitute.For<FluentValidation.IValidator<CreateCompanyCommand>>();
 
-			feature = new CreateCompanyCommandHandle(repository, unitOfWork, validator);
+			feature = new CreateCompanyCommandHandle(repository, unitOfWork);
 		}
 
 		[TestMethod]
