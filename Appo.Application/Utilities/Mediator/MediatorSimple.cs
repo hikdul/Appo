@@ -4,7 +4,7 @@ using FluentValidation.Results;
 
 namespace Appo.Aplication.Utilities.Mediator
 {
-	public class MediatorSimple
+	public class MediatorSimple: IMediator
 	{
 		private readonly IServiceProvider serviceProvider;
 

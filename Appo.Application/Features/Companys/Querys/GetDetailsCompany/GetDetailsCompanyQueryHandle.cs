@@ -3,6 +3,7 @@ using System.Text;
 using Appo.Aplication.Utilities.Mediator;
 using Appo.Aplication.Exceptions;
 using Appo.Core.Entities;
+using Appo.Aplication.Contracts.Repositories;
 
 namespace Appo.Aplication.Features.Companys.Querys
 {
@@ -25,7 +26,7 @@ namespace Appo.Aplication.Features.Companys.Querys
 				 throw new NotFoundException();
 			 }
 
-			 response.ToDto();
+			 return response.ToDto();
 
 		}
 	}
