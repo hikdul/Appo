@@ -1,6 +1,7 @@
 
 using Appo.Application;
 using Appo.Persistence;
+using Appo.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
 
 var app = builder.Build();
+
+app.UseExceptionHandlerMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

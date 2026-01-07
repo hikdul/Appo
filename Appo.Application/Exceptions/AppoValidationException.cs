@@ -10,7 +10,7 @@ namespace Appo.Aplication.Exceptions
 {
     public class AppoValidationException: Exception
     {
-        public List<string> ValidationErrors { get; set; } = [];
+        public static List<string> ValidationErrors { get; set; } = [];
 
         public AppoValidationException(string errorMessage)
         {
