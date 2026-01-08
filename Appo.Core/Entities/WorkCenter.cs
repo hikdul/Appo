@@ -5,7 +5,7 @@ using Appo.Core.Exceptions;
 
 namespace Appo.Core.Entities
 {
-	public class Office
+	public class WorkCenter
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }
@@ -13,21 +13,24 @@ namespace Appo.Core.Entities
 		//public Guid TenantId { get; set; } //TODO: esto lo dejamos para cuando trabajo con esta area
 
 		#region created
-		protected Office()
+
+		protected WorkCenter()
 		{
 
 		}
 
-		public Office(string name, Direction? direction)
+		public WorkCenter(string name, Direction? direction)
 		{
 			validationRules(name);
 			this.Id = Guid.CreateVersion7();
 			this.Name = name;
 			this.Direction = direction;
 		}
+
 		#endregion
 
 		#region Edit
+
 		public void Up(string? name, Direction? direction)
 		{
 			UpName(name);
@@ -52,7 +55,7 @@ namespace Appo.Core.Entities
 		private void validationRules(string name)
 		{
 			if(string.IsNullOrWhiteSpace(name))
-				throw new BusinesRuleException("the Office Name is required");
+				throw new BusinesRuleException("the WorkCenter Name is required");
 		}
 		#endregion
 	}

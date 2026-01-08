@@ -13,7 +13,7 @@ namespace Appo.Core.Entities
 		public Guid Id { get; set; }
 		public string Name { get; private set; }
 		public string? LastName { get; private set; }
-		public Email? Email { get; set; } //TODO: que el constructo valide que exista al menos 1 de las 2 para guardar los datos...
+		public Email Email { get; set; } //TODO: que el constructo valide que exista al menos 1 de las 2 para guardar los datos...
 		public PhoneNumber? PhoneNumber { get; set; }
 
 		#region created
