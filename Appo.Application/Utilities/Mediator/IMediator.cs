@@ -7,6 +7,6 @@ namespace Appo.Aplication.Utilities.Mediator
 	{
 	    
         Task<TResponse> Send<TResponse>(IRequest<TResponse> request);
-        //Task Send(IRequest request);
+        Task Send(IRequest request);
 	}
 }

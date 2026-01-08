@@ -13,6 +13,9 @@ namespace Appo.Aplication.Utilities.Mediator
 			this.serviceProvider = serviceProvider;
 		}
 
+		///<summary>
+		/// Util para cuando necesitaos una respueta
+		///</summary>
 		public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request)
 		{
 			await ExecValidations(request);
@@ -35,7 +38,11 @@ namespace Appo.Aplication.Utilities.Mediator
 			var action = FeatureType.GetMethod("Handle")!;
 			return await (Task<TResponse>)action.Invoke(Feature, new object[] { request })!;
 		}
-/*
+
+		///<summary>
+		/// Cuando se ejecuata una accion y no necesitamos respuesta
+		///</summary>
+
 		public async Task Send(IRequest request)
 		{
 			await ExecValidations(request);
@@ -53,7 +60,10 @@ namespace Appo.Aplication.Utilities.Mediator
 			var action = FeatureType.GetMethod("Handle")!;
 			await (Task)action.Invoke(Feature, new object[] { request })!;
 		}
-		*/
+
+		///<summary>
+		/// Para ejecutar las validaciones en caso de existir
+		///</summary>
 
 		private async Task ExecValidations(object request)
 		{

@@ -1,5 +1,4 @@
 
-using System;
 using Appo.Aplication.Features.Companys.Commands;
 using Appo.Aplication.Utilities.Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -29,12 +28,28 @@ namespace Appo.API.Controllers
 			return Created();
 		}
 
+		[HttpPut("{Id}")]
+		public async Task<IActionResult> Put([FromQuery]Guid Id,[FromBody] Company_up ins)
+		{
+			var command = new EditCompanyCommand {Id = Id, Name = ins.Name, Description = ins.Description};
+			await  mediator.Send(command);
+			return Ok();
+		}
+
 
 		[HttpGet("{Id}")]
 		public async Task<IActionResult> Get(Guid Id)
 		{
 			var query = new GetDetailsCompanyQuery { Id = Id };
 			CompanyOut response = await mediator.Send(query);
+			return Ok(response);
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Get()
+		{
+			var query = new GetListCompanysQuery();
+			var response = await mediator.Send(query);
 			return Ok(response);
 		}
 

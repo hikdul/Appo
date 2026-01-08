@@ -53,7 +53,6 @@ namespace Appo.API.Middleware
 	}
 
 	//?: Clase para facilitar el uso del middleware
-	
 	public static class HarlerExceptionMiddlewareExtensions
 	{
 		public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder builder)

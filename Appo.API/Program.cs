@@ -20,7 +20,7 @@ var app = builder.Build();
 
 app.UseExceptionHandlerMiddleware();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipelin
 if (app.Environment.IsDevelopment())
 {
 	//TODO: ver si aca puedes usar esto; o mejor continuamos con swagger
