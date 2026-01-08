@@ -19,8 +19,7 @@ namespace Appo.Aplication.Features.Companys.Querys
 		public async Task<List<CompanyOut>> Handle(GetListCompanysQuery request)
 		{
 			var ent = await repository.GetAll();
-            var dto = ent.Select(ent => ent.Dto()).ToList();
-            return dto;
+            return ent.Select(ent => ent.Dto()).ToList();
 		}
 
 	}

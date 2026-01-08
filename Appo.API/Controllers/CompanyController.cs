@@ -4,6 +4,7 @@ using Appo.Aplication.Utilities.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Appo.API.DTOS;
 using Appo.Aplication.Features.Companys.Querys;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Appo.API.Controllers
 {
@@ -23,13 +24,24 @@ namespace Appo.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] Company_in ins)
 		{
-			var command = new CreateCompanyCommand { Name = ins.Name, Description = ins.Description };
-			await mediator.Send(command);
-			return Created();
+			try
+			{
+				var command = new CreateCompanyCommand { Name = ins.Name, Description = ins.Description };
+				await mediator.Send(command);
+				return Created();
+			}
+			catch (System.Exception ex)
+			{
+				Console.WriteLine("Error al crear el huevon");
+				Console.WriteLine(ex.Message);
+				Console.WriteLine(ex.InnerException?.Message);
+				throw;
+			}
 		}
 
+
 		[HttpPut("{Id}")]
-		public async Task<IActionResult> Put([FromQuery]Guid Id,[FromBody] Company_up ins)
+		public async Task<IActionResult> Put(Guid Id, [FromBody] Company_up ins)
 		{
 			var command = new EditCompanyCommand {Id = Id, Name = ins.Name, Description = ins.Description};
 			await  mediator.Send(command);

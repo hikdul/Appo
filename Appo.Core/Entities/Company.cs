@@ -21,7 +21,7 @@ namespace Appo.Core.Entities
 			ValidationRules(name, Description);
 			this.Id = Guid.CreateVersion7();
 			this.Name = name;
-			if(string.IsNullOrWhiteSpace(description))
+			if(!string.IsNullOrWhiteSpace(description))
 				this.Description = description;
 		}
 		#endregion

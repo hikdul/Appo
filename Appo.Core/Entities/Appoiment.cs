@@ -44,7 +44,7 @@ namespace Appo.Core.Entities
 			this.CustomerId = customerId;
 			this.TimeInterval = new(start, finish);
 			this.Status = AppoimentStatus.Reserved;
-			if(string.IsNullOrWhiteSpace(CustomerRequest))
+			if(!string.IsNullOrWhiteSpace(CustomerRequest))
 				this.CustomerRequest = CustomerRequest;
 			if(Guid.Empty != WorkerId && WorkerId != null)
 				this.WorkerId = WorkerId;

@@ -29,12 +29,12 @@ namespace Appo.Aplication.Features.Companys.Commands
             {
                 var ent = new Company(command.Name, command.Description);
                 var resp = await repository.Add(ent);
-                unitOfWork.Commit();
+                await unitOfWork.Commit();
                 return resp.Id;
             }
             catch (System.Exception)
             {
-                unitOfWork.Rollback();
+                await unitOfWork.Rollback();
                 throw;
             }
         }

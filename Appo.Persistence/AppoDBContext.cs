@@ -24,4 +24,5 @@ namespace Appo.Persistence
 
 		public DbSet<Company> Companys { get; set; }
 	}
+}
 
