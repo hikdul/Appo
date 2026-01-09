@@ -24,19 +24,9 @@ namespace Appo.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] Company_in ins)
 		{
-			try
-			{
 				var command = new CreateCompanyCommand { Name = ins.Name, Description = ins.Description };
 				await mediator.Send(command);
 				return Created();
-			}
-			catch (System.Exception ex)
-			{
-				Console.WriteLine("Error al crear el huevon");
-				Console.WriteLine(ex.Message);
-				Console.WriteLine(ex.InnerException?.Message);
-				throw;
-			}
 		}
 
 

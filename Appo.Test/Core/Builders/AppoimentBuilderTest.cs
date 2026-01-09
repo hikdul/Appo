@@ -28,7 +28,7 @@ namespace Appo.Test.Builders {
 			Assert.IsNotNull(appoiment);
 			Assert.AreEqual(AppoimentStatus.Reserved, appoiment.Status);
 			Assert.IsNull(appoiment.WorkerId);
-			Assert.IsNull(appoiment.OfficeId);
+			Assert.IsNull(appoiment.WorkCenterId);
 			Assert.AreEqual(appoiment.CustomerId, ValidCustomerId);
 		}
 
@@ -45,11 +45,11 @@ namespace Appo.Test.Builders {
 			var appoiment = AppoimentBuilder
 				.Create(ValidCustomerId, Start, Finish)
 				.WithWorker(ValidWorkerId)
-				.WithOffice(ValidOfficeId)
+				.WithWorkCenter(ValidOfficeId)
 				.Build();
 
 			Assert.AreEqual(ValidWorkerId, appoiment.WorkerId);
-			Assert.AreEqual(ValidOfficeId, appoiment.OfficeId);
+			Assert.AreEqual(ValidOfficeId, appoiment.WorkCenterId);
 		}
 
 		[TestMethod]

@@ -24,6 +24,7 @@ namespace Appo.Persistence
 
 		public DbSet<Company> Companys { get; set; }
 		public DbSet<WorkCenter> WorkCenters { get; set; }
+		public DbSet<Person> Persons { get; set; }
 	}
 }
 
