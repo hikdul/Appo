@@ -15,13 +15,13 @@ namespace Appo.Core.Entities
 		public AppoTimeInterval TimeInterval { get; private set; }
 
 		public Guid CustomerId { get; private set; }
-		public Customer? Customer { get; private set; }
+		public Person? Customer { get; private set; }
 
 		public Guid? WorkerId { get; private set; }
-		public User? Worker { get; private set; }
+		public Person? Worker { get; private set; }
 
-		public Guid? OfficeId { get; private set; }
-		public Office? Office { get; private set; }
+		public Guid? WorkCenterId { get; private set; }
+		public WorkCenter? WorkCenter { get; private set; }
 
 		public AppoimentStatus Status { get; private set; }
 
@@ -34,7 +34,6 @@ namespace Appo.Core.Entities
 		#region created
 		private Appoiment()
 		{
-		    
 		}
 
 		internal Appoiment(Guid customerId, DateTime start, DateTime finish,Guid? WorkerId ,string? CustomerRequest)
@@ -60,11 +59,11 @@ namespace Appo.Core.Entities
 			this.WorkerId = workerId;
 		}
 
-		internal void AssingOffice(Guid officeId)
+		internal void AssingWorkCenter(Guid WorkCenterId)
 		{
-			if(officeId == Guid.Empty)
-				throw new BusinesRuleException("Not Valid Office");
-			this.OfficeId = officeId;
+			if(WorkCenterId == Guid.Empty)
+				throw new BusinesRuleException("Not Valid WorkCenter");
+			this.WorkCenterId = WorkCenterId;
 		}
 
 		internal void AssingCustomerRequest(string request)

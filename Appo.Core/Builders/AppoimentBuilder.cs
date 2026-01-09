@@ -15,7 +15,7 @@ namespace Appo.Core.Builders
 
 		// Opcionales
 		private Guid? _workerId;
-		private Guid? _officeId;
+		private Guid? _workCenterId;
 		private string? _customerRequest;
 		private string? _workDescription;
 		private string? _gossip;
@@ -41,12 +41,13 @@ namespace Appo.Core.Builders
 			return this;
 		}
 
-		public AppoimentBuilder WithOffice(Guid officeId)
-		{
-			if (officeId == Guid.Empty)
-				throw new BusinesRuleException("OfficeId is invalid");
 
-			_officeId = officeId;
+		public AppoimentBuilder WithWorkCenter(Guid workCenterId)
+		{
+			if (workCenterId == Guid.Empty)
+				throw new BusinesRuleException("WorkCenterId is invalid");
+
+			_workCenterId = workCenterId;
 			return this;
 		}
 
@@ -80,8 +81,8 @@ namespace Appo.Core.Builders
 			if (_workerId.HasValue)
 				appoiment.AssingWorker(_workerId.Value);
 
-			if (_officeId.HasValue)
-				appoiment.AssingOffice(_officeId.Value);
+			if (_workCenterId.HasValue)
+				appoiment.AssingWorkCenter(_workCenterId.Value);
 
 			if (!string.IsNullOrWhiteSpace(_customerRequest))
 				appoiment.AssingCustomerRequest(_customerRequest);

@@ -1,9 +1,10 @@
 
 namespace Appo.Core.Entities
 {
-    public class User
+    public class Partner
     {
-		public Guid Id { get; set; }
+		public Guid Id { get; set; } // Note: se permite trabajar como entidad individual para facilitar la obtencion de datos para las empresas que seran los clientes que pagan
+		public Guid TenantId { get; set; } //?: Por ahora aca va el valor de la empresa
 		public Guid PersonId { get; set; }
 		public Person Person { get; set; }
 		//?: aca deberia de ir la empresa y tambien los permisos que tiene este usuario dentro de la empresa.. incluso si es el jefazo(quien paga)
@@ -12,22 +13,23 @@ namespace Appo.Core.Entities
     	// TODO: verificar que aca el Email si o si sea obligatorio (Por ahora)
     	// TODO: Manejara el TenandId desde aca; pero eso se define luego
 
-		private User():base()
+		private Partner():base()
 		{
 		    
 		}
 
-		public User(string name, string lastName, string? email, string? phoneNumber) 
+		public Partner(Guid TenantId, string name, string lastName, string? email, string? phoneNumber) 
 		{
 		    ValidationRules(name, lastName, email, phoneNumber);
-			this.Person = new(name,  lastName,  email,  phoneNumber);
 			this.Id = Guid.CreateVersion7();
+			this.TenantId = TenantId;
+			this.Person = new(name,  lastName,  email,  phoneNumber);
 			this.PersonId = this.Person.Id;
 		}
 
-		public User(Guid personId)
+		public Partner(Guid TenantId, Guid personId)
 		{
-			this.Id = Guid.CreateVersion7();
+			this.TenantId = TenantId;
 			this.PersonId = personId;
 		}
 

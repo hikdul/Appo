@@ -1,7 +1,6 @@
 
 using Appo.Aplication.Utilities.Mediator;
 using Appo.Aplication.Contracts.Repositories;
-using System.Linq;
 
 namespace Appo.Aplication.Features.Companys.Querys
 {

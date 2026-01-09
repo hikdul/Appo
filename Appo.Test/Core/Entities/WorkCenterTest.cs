@@ -7,7 +7,7 @@ using Appo.Core.Entities;
 namespace Appo.Test.Entities
 {
 	[TestClass]
-	public class OfficeTest
+	public class WorkCenterTest
 	{
 		[TestMethod]
 		public void Created_bad()
@@ -15,16 +15,16 @@ namespace Appo.Test.Entities
 
 			var ex = Assert.ThrowsExactly<BusinesRuleException>(() =>
 					{
-					Office Flag = new(" ",null);
+					WorkCenter Flag = new(" ",null);
 					});
-			Assert.AreEqual("the Office Name is required", ex.Message);
+			Assert.AreEqual("the WorkCenter Name is required", ex.Message);
 		}
 
 		[TestMethod]
 		public void Created_Ok()
 		{
 			string name = Guid.NewGuid().ToString();
-			Office Flag = new(name,null);
+			WorkCenter Flag = new(name,null);
 			Assert.AreEqual(name,Flag.Name);
 			Assert.AreNotEqual(Guid.Empty,Flag.Id);
 		}
@@ -33,8 +33,8 @@ namespace Appo.Test.Entities
 		[TestMethod]
 		public void Edit_whitNotEdit()
 		{
-            string name = Guid.NewGuid().ToString();
-			Office Flag = new(name,null);
+			string name = Guid.NewGuid().ToString();
+			WorkCenter Flag = new(name,null);
 			Guid Id = Flag.Id;
 			Assert.AreEqual(name, Flag.Name);
 			Assert.AreEqual(Id, Flag.Id);
@@ -44,12 +44,12 @@ namespace Appo.Test.Entities
 			Assert.AreEqual(Id, Flag.Id);
 		}
 
-		
+
 		[TestMethod]
 		public void Edit_Ok()
 		{
-            string name = Guid.NewGuid().ToString();
-			Office Flag = new(name,null);
+			string name = Guid.NewGuid().ToString();
+			WorkCenter Flag = new(name,null);
 			Guid Id = Flag.Id;
 			Assert.AreEqual(name, Flag.Name);
 			Assert.IsNull(Flag.Direction);

@@ -1,6 +1,6 @@
-namespace Appo.API.DTOs.WorkCompany
+namespace Appo.API.DTOs.WorkCenter
 {
-	public class WorkCompany_in
+	public class WorkCenter_in
 	{
 		public string Name { get; set; }
 		public string Direction { get; set; } = string.Empty;

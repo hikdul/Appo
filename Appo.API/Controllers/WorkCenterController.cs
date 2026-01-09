@@ -1,28 +1,29 @@
 using Appo.Aplication.Utilities.Mediator;
-using Appo.API.DTOs.WorkCompany;
+using Appo.API.DTOs.WorkCenter;
 using Microsoft.AspNetCore.Mvc;
 using Appo.Application.Features.WorkCenter.Commands.CreateWorkCenter;
 using Appo.Core.ObjectValues;
 using Appo.Application.Features.WorkCenter.Commands.UpWorkCenter;
 using Appo.Application.Features.WorkCenter.Querys.GetWorkCenterDetails;
+using Appo.Application.Features.WorkCenter.Querys.GetListWorkCenter;
 
 namespace Appo.API.Controllers
 {
 
 	[ApiController]
-	[Route("api/WorkCompany")]
-	public class WorkCompanyController: ControllerBase
+	[Route("api/WorkCenter")]
+	public class WorkCenterController: ControllerBase
 	{
 		private readonly IMediator mediator;
 
-		public WorkCompanyController(IMediator _mediator)
+		public WorkCenterController(IMediator _mediator)
 		{
 			this.mediator = _mediator;
 		}
 
 
 		[HttpPost]
-		public async Task<IActionResult> Post([FromBody] WorkCompany_in ins)
+		public async Task<IActionResult> Post([FromBody] WorkCenter_in ins)
 		{
 			var dir = new Direction(ins.Direction,ins.Latitud, ins.Longitud);
 			var command = new CreateWorkCenterCommand { Name = ins.Name, Direction = dir };
@@ -32,7 +33,7 @@ namespace Appo.API.Controllers
 
 
 		[HttpPut("{Id}")]
-		public async Task<IActionResult> Put(Guid Id, [FromBody] WorkCompany_in ins)
+		public async Task<IActionResult> Put(Guid Id, [FromBody] WorkCenter_in ins)
 		{
 			var command = new UpWorkCenterCommand {Id = Id, Name = ins.Name, Direction = ins.Direction, Latitud = ins.Latitud, Longitud = ins.Longitud };
 			await  mediator.Send(command);
@@ -48,10 +49,11 @@ namespace Appo.API.Controllers
 			return Ok(response);
 		}
 
+
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-			var query = new GetListCompanysQuery();
+			var query = new GetListWorkCenterQuery();
 			var response = await mediator.Send(query);
 			return Ok(response);
 		}
