@@ -5,6 +5,7 @@ using Appo.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Appo.Persistence.Migrations
 {
     [DbContext(typeof(AppoDBContext))]
-    partial class AppoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260115163923_CustomerAndPartnetMigration")]
+    partial class CustomerAndPartnetMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

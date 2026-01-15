@@ -19,6 +19,8 @@ namespace Appo.Persistence
 			services.AddScoped<IRepositoryCompany ,CompanyRepository>();
 			services.AddScoped<IRepositoryWorkCenter ,WorkCenterRepository>();
 			services.AddScoped<IRepositoryPerson , PersonRepository>();
+			services.AddScoped<IRepositoryCustomer, CustomerRepository>();
+			services.AddScoped<IRepositoryPartner, PartnerRepository>();
 
 			services.AddScoped<IUnitOfWork, UnitOfWorkEFCore>();
 

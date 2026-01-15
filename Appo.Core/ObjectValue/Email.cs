@@ -8,6 +8,9 @@ namespace Appo.Core.ObjectValues
 	{
 		public string Value { get; }
 
+		private Email(){}
+
+
 		public Email(string email)
 		{
 

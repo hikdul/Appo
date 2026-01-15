@@ -14,18 +14,9 @@ namespace Appo.Core.Entities
     	// TODO: verificar que aca el Email si o si sea obligatorio (Por ahora)
     	// TODO: Manejara el TenandId desde aca; pero eso se define luego
 
-		private Partner():base()
+		private Partner()
 		{
 		    
-		}
-
-		public Partner(Guid TenantId, string name, string lastName, string? email, string? phoneNumber) 
-		{
-		    ValidationRules(name, lastName, email, phoneNumber);
-			//this.Id = Guid.CreateVersion7();
-			this.TenantId = TenantId;
-			this.Person = new(name,  lastName,  email,  phoneNumber);
-			this.PersonId = this.Person.Id;
 		}
 
 		public Partner(Guid TenantId, Guid personId)

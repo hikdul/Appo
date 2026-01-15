@@ -27,6 +27,7 @@ namespace Appo.Core.Entities
 			ValidationRules(name, lastName, email, phoneNumber);
 			this.Id = Guid.CreateVersion7();
 			this.Name = name;
+			this.LastName = null;
 			this.LastName = lastName;
 			if(!string.IsNullOrWhiteSpace(email))
 				this.Email = new(email);

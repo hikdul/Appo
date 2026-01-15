@@ -7,9 +7,10 @@ namespace Appo.Core.ObjectValues
 	{
 		public string Value { get; }
 
+		private PhoneNumber(){}
+
 		public PhoneNumber(string phoneNumber)
 		{
-		    
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 throw new BusinesRuleException($"The {nameof(PhoneNumber)} is required ");
