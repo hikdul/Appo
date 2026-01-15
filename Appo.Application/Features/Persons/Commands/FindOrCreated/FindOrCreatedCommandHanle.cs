@@ -5,7 +5,7 @@ using Appo.Core.Entities;
 
 namespace Appo.Application.Features.Persons.Commands.FindOrCreated
 {
-	public class FindOrCreatedCommandHanle: IRequestHandler<FindOrCreatedCommand, Guid>
+	public class FindOrCreatedCommandHanle: IRequestHandler<FindOrCreatedCommand, Person>
 	{
 
 		private readonly IRepositoryPerson repository;
@@ -17,19 +17,17 @@ namespace Appo.Application.Features.Persons.Commands.FindOrCreated
 			this.unitOfWork = _uow;
 		}
 
-		public async Task<Guid> Handle(FindOrCreatedCommand command)
+		public async Task<Person> Handle(FindOrCreatedCommand command)
 		{
-			if(Guid.Empty != command.Id)
+
+			Person person = await repository.FindOrCreated(command.Name, command.LastName, command.Email, command.PhoneNumber);
+
+			if(person == null)
 			{
-				var ent = await repository.GetById(command.Id);
-				if(ent is not null)
-					return command.Id;
+				person = new Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
+				await unitOfWork.Commit();
 			}
-
-			var person = new Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
-			await unitOfWork.Commit();
-
-			return person.Id;
+			return person;
 
 		}
 	}

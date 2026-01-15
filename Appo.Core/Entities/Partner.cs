@@ -3,8 +3,9 @@ namespace Appo.Core.Entities
 {
     public class Partner
     {
-		public Guid Id { get; set; } // Note: se permite trabajar como entidad individual para facilitar la obtencion de datos para las empresas que seran los clientes que pagan
-		public Guid TenantId { get; set; } //?: Por ahora aca va el valor de la empresa
+		//public Guid Id { get; set; } // Note: se permite trabajar como entidad individual para facilitar la obtencion de datos para las empresas que seran los clientes que pagan
+		// TODO: TenantId y personId deben de ser el mismisimo ID
+		public Guid TenantId { get; set; } //?: Por ahora aca va el valor de la empresa 
 		public Guid PersonId { get; set; }
 		public Person Person { get; set; }
 		//?: aca deberia de ir la empresa y tambien los permisos que tiene este usuario dentro de la empresa.. incluso si es el jefazo(quien paga)
@@ -21,7 +22,7 @@ namespace Appo.Core.Entities
 		public Partner(Guid TenantId, string name, string lastName, string? email, string? phoneNumber) 
 		{
 		    ValidationRules(name, lastName, email, phoneNumber);
-			this.Id = Guid.CreateVersion7();
+			//this.Id = Guid.CreateVersion7();
 			this.TenantId = TenantId;
 			this.Person = new(name,  lastName,  email,  phoneNumber);
 			this.PersonId = this.Person.Id;

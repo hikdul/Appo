@@ -1,4 +1,5 @@
 using System;
+using Appo.Core.Exceptions;
 
 namespace Appo.Core.Entities
 {
@@ -6,7 +7,8 @@ namespace Appo.Core.Entities
 	//TODO: permitir de algun modo enlazar datos tanto como cliente como usuario
     public class Customer
     {
-		public Guid Id { get; set; }
+		//public Guid Id { get; set; }
+		// TODO: person y TenantId tiene que ser el inicio
 		public Guid TenantId { get; private set; } //?: para este caso la empresa
 		public Guid PersonId { get; private set; }
 		public Person Person { get; private set; }
@@ -17,21 +19,13 @@ namespace Appo.Core.Entities
 		{
 		}
 
-		// para crear de manera limpia con todo los datos
-		public Customer(Guid TenantId,string name, string lastName, string? email, string? phoneNumber) 
+		// vamos a trabajar lo mas simple posible...
+		public Customer(Guid TenantId, Guid PersonId)
 		{
-		    ValidationRules(name, lastName, email, phoneNumber);
-			this.Id = Guid.CreateVersion7();
+			ValidationRules(TenantId, PersonId);
 			this.TenantId = TenantId;
-			this.Person = new( name,  lastName,  email,  phoneNumber);
-			this.PersonId = this.Person.Id;
-			this.LastVisit = DateTime.Now;
-		}
-
-		// para crear solo ingresando a la personal cuando ya existe
-		public Customer(Guid PersonId)
-		{
-			this.PersonId = this.Person.Id;
+			this.PersonId = PersonId;
+			this.LastVisit = null;
 		}
 
 		public void Up_LastVisit(DateTime time)
@@ -39,8 +33,12 @@ namespace Appo.Core.Entities
 			this.LastVisit = time;
 		}
 
-		private void ValidationRules(string name, string lastName, string? email, string? phoneNumber)
+		private void ValidationRules(Guid TenantId, Guid PersonId)
 		{
+			if(Guid.Empty == PersonId)
+				throw new BusinesRuleException("We Can't created this user");
+			if(Guid.Empty == TenantId)
+				throw new BusinesRuleException("The Company of the clinent its no assing");
 		}
 	}
 }
