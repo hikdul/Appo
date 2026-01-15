@@ -8,6 +8,13 @@ namespace Appo.Persistence.Configurations
     {
 		public void Configure(EntityTypeBuilder<Appoiment> builder)
 		{
+
+            builder.ComplexProperty(prop => prop.TimeInterval, action =>
+            {
+                action.Property(e => e.Start).HasColumnName("Start");
+                action.Property(e => e.Finish).HasColumnName("Finish");
+            });
+
 			builder.Property(x => x.Gossip)
 				.HasMaxLength(1500);
 
