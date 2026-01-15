@@ -1,8 +1,10 @@
 using Appo.Aplication.Utilities.Mediator;
+using Appo.Application.Utilities.Pagination;
 
 namespace Appo.Application.Features.WorkCenter.Querys.GetListWorkCenter
 {
-    public class GetListWorkCenterQuery: IRequest<List<WorkCenter_out>>
+	//NOTA: que se hereda del filtro de paginacion y la respuesta va a ser el paginado
+    public class GetListWorkCenterQuery: FilterPagination, IRequest<PaginationDTO<WorkCenter_out>>
     {
     }
 }

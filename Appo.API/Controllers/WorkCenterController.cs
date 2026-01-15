@@ -6,6 +6,7 @@ using Appo.Core.ObjectValues;
 using Appo.Application.Features.WorkCenter.Commands.UpWorkCenter;
 using Appo.Application.Features.WorkCenter.Querys.GetWorkCenterDetails;
 using Appo.Application.Features.WorkCenter.Querys.GetListWorkCenter;
+using Appo.API.Utilities.Pagination;
 
 namespace Appo.API.Controllers
 {
@@ -51,11 +52,12 @@ namespace Appo.API.Controllers
 
 
 		[HttpGet]
-		public async Task<IActionResult> Get()
+		public async Task<IActionResult> Get([FromQuery] GetListWorkCenterQuery query )
 		{
-			var query = new GetListWorkCenterQuery();
+			//var query = new GetListWorkCenterQuery();
 			var response = await mediator.Send(query);
-			return Ok(response);
+			HttpContext.InsertPaginationOnHead(response.totalElements);
+			return Ok(response.Elements);
 		}
 
 	}

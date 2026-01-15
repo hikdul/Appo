@@ -1,9 +1,10 @@
 using Appo.Aplication.Utilities.Mediator;
 using Appo.Application.Contracts.Repositories;
+using Appo.Application.Utilities.Pagination;
 
 namespace Appo.Application.Features.WorkCenter.Querys.GetListWorkCenter
 {
-    public class GetListWorkCenterQueryHandle: IRequestHandler<GetListWorkCenterQuery, List<WorkCenter_out>>
+    public class GetListWorkCenterQueryHandle: IRequestHandler<GetListWorkCenterQuery, PaginationDTO<WorkCenter_out>>
     {
 		private readonly IRepositoryWorkCenter repository;
 		public GetListWorkCenterQueryHandle(IRepositoryWorkCenter _repository)
@@ -12,10 +13,17 @@ namespace Appo.Application.Features.WorkCenter.Querys.GetListWorkCenter
 		}
 
 
-		public async Task<List<WorkCenter_out>> Handle(GetListWorkCenterQuery query)
+		public async Task<PaginationDTO<WorkCenter_out>> Handle(GetListWorkCenterQuery query)
 		{
-			 var response = await repository.GetAll();
-			 return response.Select(r => r.Dto()).ToList();
+			 var ents = await repository.GetFilter(query);
+			 var total = await repository.GetTotalAmountOfRecords();
+			 var dtos = ents.Select(ent => ent.Dto()).ToList();
+			PaginationDTO<WorkCenter_out> response = new() {
+				 totalElements = total,
+				 Elements = dtos
+			 };
+
+			return response;
 		}
     }
 }
