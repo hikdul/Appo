@@ -19,15 +19,24 @@ namespace Appo.Application.Features.Persons.Commands.FindOrCreated
 
 		public async Task<Person> Handle(FindOrCreatedCommand command)
 		{
-
-			Person person = await repository.FindOrCreated(command.Name, command.LastName, command.Email, command.PhoneNumber);
-
-			if(person == null)
+			try
 			{
-				person = new Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
-				await unitOfWork.Commit();
+				Person person = await repository.FindOrCreated(command.Name, command.LastName, command.Email, command.PhoneNumber);
+
+				if(person == null)
+				{
+					person = new Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
+					await unitOfWork.Commit();
+				}
+				return person;
 			}
-			return person;
+			catch (System.Exception)
+			{
+
+				await unitOfWork.Rollback();
+				throw;
+			}
+
 
 		}
 	}

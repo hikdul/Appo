@@ -15,10 +15,10 @@ namespace Appo.Core.Entities
 		public AppoTimeInterval TimeInterval { get; private set; }
 
 		public Guid CustomerId { get; private set; }
-		public Person? Customer { get; private set; }
+		public Customer Customer { get; private set; }
 
-		public Guid? WorkerId { get; private set; }
-		public Person? Worker { get; private set; }
+		public Guid? PartnerId { get; private set; }
+		public Partner? Partner { get; private set; }
 
 		public Guid? WorkCenterId { get; private set; }
 		public WorkCenter? WorkCenter { get; private set; }
@@ -36,7 +36,7 @@ namespace Appo.Core.Entities
 		{
 		}
 
-		internal Appoiment(Guid customerId, DateTime start, DateTime finish,Guid? WorkerId ,string? CustomerRequest)
+		internal Appoiment(Guid customerId, DateTime start, DateTime finish,Guid? PartnerId ,string? CustomerRequest)
 		{
 			validateTimeIntelval(start, finish);
 			this.Id = Guid.CreateVersion7();
@@ -45,18 +45,18 @@ namespace Appo.Core.Entities
 			this.Status = AppoimentStatus.Reserved;
 			if(!string.IsNullOrWhiteSpace(CustomerRequest))
 				this.CustomerRequest = CustomerRequest;
-			if(Guid.Empty != WorkerId && WorkerId != null)
-				this.WorkerId = WorkerId;
+			if(Guid.Empty != PartnerId && PartnerId != null)
+				this.PartnerId = PartnerId;
 		}
 		#endregion
 
 		#region Setters Opcionals
 
-		internal void AssingWorker(Guid workerId)
+		internal void AssingWorker(Guid PartnerId)
 		{
-			if(workerId == Guid.Empty)
+			if(PartnerId == Guid.Empty)
 				throw new BusinesRuleException("Not Valid Worker");
-			this.WorkerId = workerId;
+			this.PartnerId = PartnerId;
 		}
 
 		internal void AssingWorkCenter(Guid WorkCenterId)

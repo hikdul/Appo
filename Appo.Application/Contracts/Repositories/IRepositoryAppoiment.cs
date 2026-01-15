@@ -3,8 +3,7 @@ using Appo.Core.Entities;
 
 namespace Appo.Application.Contracts.Repositories
 {
-    public interface IRepositoryPartner: IRepository<Partner>
+    public interface IRepositoryAppoiment: IRepository<Appoiment>
     {
-
     }
 }

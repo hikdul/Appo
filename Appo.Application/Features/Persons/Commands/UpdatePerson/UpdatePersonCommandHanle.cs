@@ -7,11 +7,11 @@ using Appo.Application.Contracts.Repositories;
 
 namespace Appo.Application.Features.Persons.Commands.UpdatePerson
 {
-    public class UpdatePersonCommandHanle: IRequestHandler<UpdatePersonCommand>
-    {
+	public class UpdatePersonCommandHanle: IRequestHandler<UpdatePersonCommand>
+	{
 
-        private readonly IRepositoryPerson repository;
-        private readonly IUnitOfWork unitOfWork;
+		private readonly IRepositoryPerson repository;
+		private readonly IUnitOfWork unitOfWork;
 
 		public UpdatePersonCommandHanle(IRepositoryPerson _repo, IUnitOfWork _uow)
 		{
@@ -21,14 +21,22 @@ namespace Appo.Application.Features.Persons.Commands.UpdatePerson
 
 		public async Task Handle(UpdatePersonCommand command)
 		{
-			var ent = await repository.GetById(command.Id);
+			try
+			{
+				var ent = await repository.GetById(command.Id);
 
-			if(ent is null)
-				throw new NotFoundException();
+				if(ent is null)
+					throw new NotFoundException();
 
-			ent.Up(command.Name, command.LastName, command.Email, command.PhoneNumber);
-			await unitOfWork.Commit();
+				ent.Up(command.Name, command.LastName, command.Email, command.PhoneNumber);
+				await unitOfWork.Commit();
+			}
+			catch (System.Exception)
+			{
+				await unitOfWork.Rollback();
+				throw;
+			}
 
 		}
-    }
+	}
 }

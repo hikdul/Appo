@@ -18,14 +18,22 @@ namespace Appo.Application.Features.Persons.Commands.CreatePerson
 
 		public async Task<Guid> Handle(CreatePersonCommand command)
 		{
+			try
+			{
+				var p = new Core.Entities.Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
 
-			var p = new Core.Entities.Person(command.Name, command.LastName, command.Email, command.PhoneNumber);
+				await repository.Add(p);
+				await unitOfWork.Commit();
 
-			await repository.Add(p);
-			await unitOfWork.Commit();
+				return p.Id;
+			}
+			catch (System.Exception)
+			{
+				await unitOfWork.Rollback();
+				throw;
+			}
 
-			return p.Id;
 
 		}
-    }
+	}
 }

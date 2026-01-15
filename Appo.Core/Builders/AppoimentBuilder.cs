@@ -78,14 +78,14 @@ namespace Appo.Core.Builders
 		{
 			var appoiment = new Appoiment(_customerId, _start, _finish, null, null);
 
+			if (!string.IsNullOrWhiteSpace(_customerRequest))
+				appoiment.AssingCustomerRequest(_customerRequest);
+
 			if (_workerId.HasValue)
 				appoiment.AssingWorker(_workerId.Value);
 
 			if (_workCenterId.HasValue)
 				appoiment.AssingWorkCenter(_workCenterId.Value);
-
-			if (!string.IsNullOrWhiteSpace(_customerRequest))
-				appoiment.AssingCustomerRequest(_customerRequest);
 
 			if (!string.IsNullOrWhiteSpace(_workDescription))
 				appoiment.AssingWorkDescription(_workDescription);

@@ -5,11 +5,11 @@ using Appo.Core.Entities;
 
 namespace Appo.Application.Features.Customers.Command.CreateCustomer
 {
-    public class CreateCustomerCommandHanle: IRequestHandler<CreateCustomerCommand>
-    {
+	public class CreateCustomerCommandHanle: IRequestHandler<CreateCustomerCommand>
+	{
 
-        private readonly IRepositoryCustomer repository;
-        private readonly IUnitOfWork unitOfWork;
+		private readonly IRepositoryCustomer repository;
+		private readonly IUnitOfWork unitOfWork;
 
 		public CreateCustomerCommandHanle(IRepositoryCustomer _repository , IUnitOfWork _uow)
 		{
@@ -19,9 +19,17 @@ namespace Appo.Application.Features.Customers.Command.CreateCustomer
 
 		public async Task Handle(CreateCustomerCommand command)
 		{
-			Customer ent = new(command.TenantId, command.PersonId);
-			await repository.Add(ent);
-			await unitOfWork.Commit();
+			try
+			{
+				Customer ent = new(command.TenantId, command.PersonId);
+				await repository.Add(ent);
+				await unitOfWork.Commit();
+			}
+			catch (System.Exception)
+			{
+				await unitOfWork.Rollback();
+				throw;
+			}
 		}
-    }
+	}
 }
