@@ -1,4 +1,7 @@
 
+#Appo
+
+
 ### Trabajo con la base de datos
 
 
@@ -15,4 +18,16 @@ En el casdo de querer *Aplicar las migraciones* se utiliza el siguiente codigo d
 
 ```bash
  dotnet ef database update --startup-project ../Appo.API/Appo.API.csproj                                                                                                                        
- ```
+```
+
+ en el caso de querer generar una migracion desde la identidad(ocea desde este proyecto) se necesita indicar la base de datos a la cual apunta el identity, como se ve acontinuacion
+
+```
+ dotnet ef migrations add IdentityFirstMigration --startup-project ../Appo.API/Appo.API.csproj --output-dir Migrations --context AppoIdentityDB
+```
+
+ y para que actualice la base de datos, igual desde el proyecto de identidad se ejecuta
+
+```
+dotnet ef database update --startup-project ../Appo.API/Appo.API.csproj --context AppoIdentityDB  
+```
