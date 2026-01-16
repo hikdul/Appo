@@ -11,10 +11,10 @@ namespace Appo.Persistence
 {
 	public static class RegisterPersistenceServices
 	{
-		public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+		public static IServiceCollection AddPersistenceServices(this IServiceCollection services, string DataBaseName)
 		{
 
-			services.AddDbContext<AppoDBContext>(options => options.UseSqlServer("name=AppoDB"));
+			services.AddDbContext<AppoDBContext>(options => options.UseSqlServer(DataBaseName));
 
 			services.AddScoped<IRepositoryCompany ,CompanyRepository>();
 			services.AddScoped<IRepositoryWorkCenter ,WorkCenterRepository>();
