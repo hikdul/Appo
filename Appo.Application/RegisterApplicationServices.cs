@@ -12,24 +12,24 @@ using Scrutor;
 
 namespace Appo.Application
 {
-	
-    public static class RegisterApplicationServices
-    {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
-        {
 
-            services.AddTransient<IMediator, MediatorSimple>();
+	public static class RegisterApplicationServices
+	{
+		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+		{
 
-            services.Scan(scan => scan.FromAssembliesOf(typeof(RegisterApplicationServices))
-                .AddClasses(c => c.AssignableTo(typeof(IRequestHandler<>)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-                .AddClasses(c => c.AssignableTo(typeof(IRequestHandler<,>)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime());
+			services.AddTransient<IMediator, MediatorSimple>();
+
+			services.Scan(scan => scan.FromAssembliesOf(typeof(RegisterApplicationServices))
+					.AddClasses(c => c.AssignableTo(typeof(IRequestHandler<>)))
+					.AsImplementedInterfaces()
+					.WithScopedLifetime()
+					.AddClasses(c => c.AssignableTo(typeof(IRequestHandler<,>)))
+					.AsImplementedInterfaces()
+					.WithScopedLifetime());
 
 
-            return services;
-        }
-    }
+			return services;
+		}
+	}
 }
