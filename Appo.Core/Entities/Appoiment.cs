@@ -9,9 +9,11 @@ namespace Appo.Core.Entities
 	//TODO: Verificar si aca no se puede trabajar con un patron builder
 	//TODO: que tambien me permita ir agregando elementos a partir de actualizacion
 	//TODO: que genere una validacion inicial, y valla validando cada particular a medida que se agrega para que trabaje continuamente.
-	public class Appoiment: AuditEnt
+	public class Appoiment: AuditEnt, ITenantEnt
 	{
 		public Guid Id { get; set; }
+
+		public Guid TenantId { get; set; }
 
 		public AppoTimeInterval TimeInterval { get; private set; }
 

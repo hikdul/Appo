@@ -6,12 +6,12 @@ using Appo.Core.Commons;
 
 namespace Appo.Core.Entities
 {
-	public class WorkCenter: AuditEnt
+	public class WorkCenter: AuditEnt, ITenantEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }
 		public Direction? Direction { get; set; }
-		//public Guid TenantId { get; set; } //TODO: esto lo dejamos para cuando trabajo con esta area
+		public Guid TenantId { get; set; }
 
 		#region created
 

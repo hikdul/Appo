@@ -6,6 +6,7 @@ using Appo.Identity.Models;
 using Appo.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 
 
@@ -22,7 +23,8 @@ builder.Services.AddAuthorization(opt => {
 });
 
 builder.Services.AddControllers(opt =>{
-			opt.Filters.Add(new AuthorizeFilter("esadmin")); // con esto todas las rutas estan protegidas dentro del API
+			opt.Filters.Add(new AuthorizeFilter("esadmin")); //! con esto todas las rutas estan protegidas dentro del API
+			opt.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());//! esto para proteger a mis clientes de ataques anti forgery
 });
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

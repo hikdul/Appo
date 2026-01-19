@@ -9,7 +9,7 @@ using Appo.Core.Commons;
 
 namespace Appo.Core.Entities
 {
-	public class Person: AuditEnt
+	public class Person: AuditEnt, ICommondEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }

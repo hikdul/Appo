@@ -6,11 +6,9 @@ namespace Appo.Core.Entities
 {
 	//TODO: Manejar el lista de empresas en el cual este usuario es cliente
 	//TODO: permitir de algun modo enlazar datos tanto como cliente como usuario
-    public class Customer: AuditEnt
+    public class Customer: AuditEnt, ITenantEnt
     {
-		//public Guid Id { get; set; }
-		// TODO: person y TenantId tiene que ser el inicio
-		public Guid TenantId { get; private set; } //?: para este caso la empresa
+		public Guid TenantId { get; set; }
 		public Guid PersonId { get; private set; }
 		public Person Person { get; private set; }
 		public DateTime? LastVisit { get; private set; }

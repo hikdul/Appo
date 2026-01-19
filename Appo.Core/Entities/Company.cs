@@ -5,7 +5,7 @@ using System;
 
 namespace Appo.Core.Entities
 {
-	public class Company: AuditEnt
+	public class Company: AuditEnt, ICommondEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }
