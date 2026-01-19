@@ -2,6 +2,8 @@ using Appo.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Appo.Application.Contracts.Identity;
+using Appo.Persistence.Services;
 
 namespace Appo.Identity
 {
@@ -18,6 +20,9 @@ namespace Appo.Identity
 			services.AddIdentityCore<User>()
 				.AddEntityFrameworkStores<AppoIdentityDB>()
 				.AddApiEndpoints();
+
+			services.AddTransient<IUsersServices, UsersServices>();
+			services.AddHttpContextAccessor();
 
 			return services;
 

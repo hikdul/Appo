@@ -2,10 +2,11 @@
 using System;
 using Appo.Core.ObjectValues;
 using Appo.Core.Exceptions;
+using Appo.Core.Commons;
 
 namespace Appo.Core.Entities
 {
-	public class WorkCenter
+	public class WorkCenter: AuditEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }

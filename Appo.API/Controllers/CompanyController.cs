@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using Appo.API.DTOS;
 using Appo.Aplication.Features.Companys.Querys;
 using System.Diagnostics.Eventing.Reader;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Appo.API.Controllers
 {
 	[ApiController]
 	[Route("api/Company")]
+//	[Authorize]
 	public class CompanyController: ControllerBase
 	{
 

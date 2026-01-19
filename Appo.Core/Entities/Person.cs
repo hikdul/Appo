@@ -1,6 +1,7 @@
 
 using Appo.Core.ObjectValues;
 using Appo.Core.Exceptions;
+using Appo.Core.Commons;
 
 
 
@@ -8,7 +9,7 @@ using Appo.Core.Exceptions;
 
 namespace Appo.Core.Entities
 {
-	public class Person
+	public class Person: AuditEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }

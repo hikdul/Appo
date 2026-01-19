@@ -1,10 +1,11 @@
 
+using Appo.Core.Commons;
 using Appo.Core.Exceptions;
 using System;
 
 namespace Appo.Core.Entities
 {
-	public class Company
+	public class Company: AuditEnt
 	{
 		public Guid Id { get; set; }
 		public string Name { get; private set; }

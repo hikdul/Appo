@@ -2,13 +2,14 @@ using System;
 using Appo.Core.ObjectValues;
 using Appo.Core.Exceptions;
 using Appo.Core.Helpers;
+using Appo.Core.Commons;
 
 namespace Appo.Core.Entities
 {
 	//TODO: Verificar si aca no se puede trabajar con un patron builder
 	//TODO: que tambien me permita ir agregando elementos a partir de actualizacion
 	//TODO: que genere una validacion inicial, y valla validando cada particular a medida que se agrega para que trabaje continuamente.
-	public class Appoiment
+	public class Appoiment: AuditEnt
 	{
 		public Guid Id { get; set; }
 

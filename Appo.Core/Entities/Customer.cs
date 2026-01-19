@@ -1,11 +1,12 @@
 using System;
+using Appo.Core.Commons;
 using Appo.Core.Exceptions;
 
 namespace Appo.Core.Entities
 {
 	//TODO: Manejar el lista de empresas en el cual este usuario es cliente
 	//TODO: permitir de algun modo enlazar datos tanto como cliente como usuario
-    public class Customer
+    public class Customer: AuditEnt
     {
 		//public Guid Id { get; set; }
 		// TODO: person y TenantId tiene que ser el inicio

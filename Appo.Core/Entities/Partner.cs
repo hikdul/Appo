@@ -1,7 +1,9 @@
 
+using Appo.Core.Commons;
+
 namespace Appo.Core.Entities
 {
-    public class Partner
+    public class Partner: AuditEnt
     {
 		//public Guid Id { get; set; } // Note: se permite trabajar como entidad individual para facilitar la obtencion de datos para las empresas que seran los clientes que pagan
 		// TODO: TenantId y personId deben de ser el mismisimo ID
