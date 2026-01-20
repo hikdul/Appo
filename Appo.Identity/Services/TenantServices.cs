@@ -23,6 +23,7 @@ namespace Appo.Identity.Services
 
 		public async Task ChangeTenantUser(Guid CompanyId, string userid)
 		{
+
 			var user =  await userManager.FindByIdAsync(userid);
 
 			if(user is null)

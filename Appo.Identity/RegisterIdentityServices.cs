@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Appo.Application.Contracts.Identity;
-using Appo.Persistence.Services;
+using Appo.Identity.Services;
 
 namespace Appo.Identity
 {
@@ -22,6 +22,7 @@ namespace Appo.Identity
 				.AddApiEndpoints();
 
 			services.AddTransient<IUsersServices, UsersServices>();
+			services.AddTransient<ITenantServices, TenantServices>();
 			services.AddHttpContextAccessor();
 
 			return services;
