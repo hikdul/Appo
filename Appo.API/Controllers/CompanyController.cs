@@ -6,6 +6,7 @@ using Appo.API.DTOS;
 using Appo.Aplication.Features.Companys.Querys;
 using System.Diagnostics.Eventing.Reader;
 using Microsoft.AspNetCore.Authorization;
+using Appo.Application.Contracts.Identity;
 
 namespace Appo.API.Controllers
 {

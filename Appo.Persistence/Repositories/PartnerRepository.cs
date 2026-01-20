@@ -6,6 +6,7 @@ namespace Appo.Persistence.Repositories
 {
 	public class PartnerRepository: Repository<Partner>, IRepositoryPartner
 	{
+
 		public PartnerRepository(AppoDBContext _context): base(_context)
 		{
 

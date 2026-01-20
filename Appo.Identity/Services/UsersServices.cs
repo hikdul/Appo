@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Appo.Application.Contracts.Identity;
 
-namespace Appo.Persistence.Services
+namespace Appo.Identity.Services
 {
     public class UsersServices: IUsersServices
     {
