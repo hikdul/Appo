@@ -1,0 +1,50 @@
+name: Gitflow Guard
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  validate-gitflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate Gitflow branch rules
+        run: |
+          echo "Base branch: ${{ github.base_ref }}"
+          echo "Head branch: ${{ github.head_ref }}"
+
+          BASE="${{ github.base_ref }}"
+          HEAD="${{ github.head_ref }}"
+
+          # feature/* -> develop
+          if [[ "$HEAD" == feature/* && "$BASE" == "develop" ]]; then
+            echo "✔ feature -> develop"
+            exit 0
+          fi
+
+          # release/* -> main
+          if [[ "$HEAD" == release/* && "$BASE" == "main" ]]; then
+            echo "✔ release -> main"
+            exit 0
+          fi
+
+          # hotfix/* -> main
+          if [[ "$HEAD" == hotfix/* && "$BASE" == "main" ]]; then
+            echo "✔ hotfix -> main"
+            exit 0
+          fi
+
+          # merge-back main -> develop
+          if [[ "$HEAD" == "main" && "$BASE" == "develop" ]]; then
+            echo "✔ main -> develop (merge-back)"
+            exit 0
+          fi
+
+          echo "❌ Gitflow violation"
+          echo "Allowed flows:"
+          echo "  feature/*  -> develop"
+          echo "  release/*  -> main"
+          echo "  hotfix/*   -> main"
+          echo "  main       -> develop"
+          exit 1
