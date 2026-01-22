@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using Appo.Aplication.Exceptions;
+using Appo.Application.Exceptions;
 
 namespace Appo.API.Middleware
 {
@@ -41,6 +42,9 @@ namespace Appo.API.Middleware
 				case AppoValidationException:
 					statusCode = HttpStatusCode.BadRequest;
 					result = JsonSerializer.Serialize(AppoValidationException.ValidationErrors);
+					break;
+				case AppoTenantException:
+					statusCode = HttpStatusCode.InternalServerError;
 					break;
 
 			}

@@ -10,21 +10,17 @@ namespace Appo.Identity.Helpers
 		belong = 0,
 
 		// Solo el jefaso trabaja aca
-		Company_power = 5,
+		Company_Created = 10,
+		Company_Details = 11,
+		Company_Delete = 19,
 
-		// Appoiment segment
-		Appoiment_Created = 10,
-		Appoiment_Details = 11,
-		Appoimment_Cancel = 16,
-		Appoiment_complete = 17,
 
 		// Customer Segment
-		Customer_created = 30,
-		Customer_Details = 31,
-		Customer_List = 32,
-		Customer_Edit = 35,
-		Customer_Delete = 39,
-
+		Customer_created = 20,
+		Customer_Details = 21,
+		Customer_List = 22,
+		Customer_Edit = 25,
+		Customer_Delete = 29,
 
 		// Partnet Segment
 		Partnet_created = 30,
@@ -33,7 +29,6 @@ namespace Appo.Identity.Helpers
 		Partnet_Edit = 35,
 		Partnet_Delete = 39,
 
-
 		// Work Center Segment
 		workcenter_created = 40,
 		workcenter_Details = 41,
@@ -41,7 +36,11 @@ namespace Appo.Identity.Helpers
 		workcenter_Edit = 45,
 		workcenter_Delete = 49,
 
-
+		// Appoiment segment
+		Appoiment_Created = 50,
+		Appoiment_Details = 51,
+		Appoimment_Cancel = 56,
+		Appoiment_Complete = 57,
 
 	}
 }

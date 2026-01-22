@@ -39,6 +39,7 @@ namespace Appo.Aplication.Features.Companys.Commands
 
 				var userActive = usersService.GetUserId();
 				await tenantServices.ChangeTenantUser(ent.Id, userActive);
+				// TODO: Falta agregar todos los permisos...
 
                 await unitOfWork.Commit();
                 return resp.Id;

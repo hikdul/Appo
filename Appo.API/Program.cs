@@ -15,12 +15,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //
 
-builder.Services.AddAuthentication(IdentityConstants.BearerScheme).AddBearerToken(IdentityConstants.BearerScheme);
+//builder.Services.AddAuthentication(IdentityConstants.BearerScheme).AddBearerToken(IdentityConstants.BearerScheme);
+/*
 builder.Services.AddAuthorization(opt => {
 		//TODO: verificar si esto es funcional o si solo estorba
 		//NOTE: en teorio existe hasta ahora 4 tipos de usuarios sa(yo), admin(que es dependiendo de la emrpesa), partnert(que tambien es basado en la empresa), customen (que es cualquiera).. donde estos usuarios tienen un estilo de trabajo y permisos bastante complejo.
-		opt.AddPolicy("esadmin", polycy => polycy.RequireClaim("esadmin"));
+	//	opt.AddPolicy("esadmin", polycy => polycy.RequireClaim("esadmin"));
 });
+
+*/
 
 builder.Services.AddControllers(opt =>{
 			opt.Filters.Add(new AuthorizeFilter("esadmin")); //! con esto todas las rutas estan protegidas dentro del API
@@ -34,8 +37,8 @@ builder.Services.AddControllers(opt =>{
 //?: carga de servicios de cada capa
 string DatabaseName = "name=AppoDB";
 builder.Services.AddApplicationServices();
-builder.Services.AddPersistenceServices(DatabaseName);
 builder.Services.AddIdentityServices(DatabaseName);
+builder.Services.AddPersistenceServices(DatabaseName);
 
 var app = builder.Build();
 

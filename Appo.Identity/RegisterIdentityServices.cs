@@ -23,6 +23,7 @@ namespace Appo.Identity
 
 			services.AddTransient<IUsersServices, UsersServices>();
 			services.AddTransient<ITenantServices, TenantServices>();
+			services.AddTransient<IIdTenantService, IdTenanService>();
 			services.AddHttpContextAccessor();
 
 			return services;

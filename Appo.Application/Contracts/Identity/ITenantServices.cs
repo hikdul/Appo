@@ -5,3 +5,4 @@ namespace Appo.Application.Contracts.Identity
 		Task ChangeTenantUser(Guid CompanyId, string userid);
     }
 }
+
