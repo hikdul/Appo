@@ -1,6 +1,15 @@
 
-#Appo
+# Appo
+ 
+ Actualmente estoy trabajando en la creacion del multitenant para este proyecto, como guia estay usando este video del gran Felipe: ` https://www.youtube.com/watch?v=wOSQ3hc7SRs&t=2666s ` hoy quede en 41:16.
+ Segun veo el codigo solo falta implementar el UI y verificar que todo funciona 
 
+ > [] De alli pasariamos a realizar las pruebas que se puede usar una IA para que las ejecute y asi reducir tiempo.
+ > [] Tambien generar una pruebas usando una base de datos en memoria para tenerla para despues..
+ > [] Generar las vistas actuales y terminar de construir los endpoint
+ > [] bloquear cada endpoint por su validacion de permisos
+ > [] Identificar que Endpoints seran libres (aunque estos son mas para la web)
+ > [] Crear una ayuda visual para ver los endPoint's y trabajarlos a nivel general
 
 ### Trabajo con la base de datos
 

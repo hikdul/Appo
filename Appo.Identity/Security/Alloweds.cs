@@ -1,4 +1,4 @@
-namespace Appo.Identity.Helpers
+namespace Appo.Identity.Security
 {
 	///<summary>
 	/// Lista de permisos que tiene cada usuario en los casos de participar como partner.

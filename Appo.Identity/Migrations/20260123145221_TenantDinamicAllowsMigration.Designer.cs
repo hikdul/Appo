@@ -4,6 +4,7 @@ using Appo.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Appo.Identity.Migrations
 {
     [DbContext(typeof(AppoIdentityDB))]
-    partial class AppoIdentityDBModelSnapshot : ModelSnapshot
+    [Migration("20260123145221_TenantDinamicAllowsMigration")]
+    partial class TenantDinamicAllowsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
