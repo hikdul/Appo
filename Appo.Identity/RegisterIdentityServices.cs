@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Appo.Application.Contracts.Identity;
 using Appo.Identity.Services;
+using Appo.Identity.Security;
+using  Microsoft.AspNetCore.Authorization ;
 
 namespace Appo.Identity
 {
@@ -24,6 +26,8 @@ namespace Appo.Identity
 			services.AddTransient<IUsersServices, UsersServices>();
 			services.AddTransient<ITenantServices, TenantServices>();
 			services.AddTransient<IIdTenantService, IdTenanService>();
+			services.AddSingleton<IAuthorizationPolicyProvider,HasAllowPolicyProvider>();
+			services.AddScoped<IAuthorizationHandler,HasAllowHandler>();
 			services.AddHttpContextAccessor();
 
 			return services;
