@@ -11,6 +11,7 @@ using Appo.Aplication.Exceptions;
 using Appo.Core.Entities;
 using Appo.Aplication.Contracts.Repositories;
 using Appo.Aplication.Contracts.Persistence;
+using Appo.Application.Contracts.Identity;
 
 namespace Appo.Test.Features
 {
@@ -26,6 +27,8 @@ namespace Appo.Test.Features
 		private IUnitOfWork unitOfWork;
 		private CreateCompanyCommandHandle feature;
 		private FluentValidation.IValidator<CreateCompanyCommand> validator;
+		private IUsersServices usersServices;
+		private ITenantServices tenantServices;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		[TestInitialize]
@@ -34,9 +37,20 @@ namespace Appo.Test.Features
 			repository = Substitute.For<IRepositoryCompany>();
 			unitOfWork = Substitute.For<IUnitOfWork>();
 			validator = Substitute.For<FluentValidation.IValidator<CreateCompanyCommand>>();
+			usersServices = Substitute.For<IUsersServices>();
+			tenantServices = Substitute.For<ITenantServices>();
 
-			feature = new CreateCompanyCommandHandle(repository, unitOfWork);
+			feature = new CreateCompanyCommandHandle(repository, unitOfWork,usersServices,tenantServices);
 		}
+
+		/*
+		 *
+		 *
+        public CreateCompanyCommandHandle(
+			IUsersServices _us,
+			ITenantServices _ts
+        )
+		 * */
 
 		[TestMethod]
 		public async Task ValidCommand_whitNotDescription()
